@@ -24,7 +24,9 @@ internal class Program
             {
                 cell.ClearContents();
             }
+            Marshal.ReleaseComObject(item);
         }
+        Marshal.ReleaseComObject(range);
 
         workbook.Close(false);
         excel.Quit();
