@@ -1,0 +1,9 @@
+<Solution>
+  <Configurations>
+    <Platform Name="x86" />
+  </Configurations>
+  <Project Path="ExcelOps_CsFW481/ExcelOps_CsFW481.csproj" Id="26d2bcb3-c4c8-42ff-9687-184e4cb2163a">
+    <Platform Project="x86" />
+  </Project>
+  <Project Path="ExcelOps_Mfc/ExcelOps_Mfc.vcxproj" />
+</Solution>
