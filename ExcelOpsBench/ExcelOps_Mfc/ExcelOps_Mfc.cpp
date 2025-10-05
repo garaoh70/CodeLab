@@ -16,6 +16,10 @@ int main()
 {
 	auto mainRoutine = [](const int count) -> int
 	{
+		const long xlCalculationAutomatic = -4105;	// Excel が再計算を制御します。
+		const long xlCalculationManual = -4135;		// ユーザーが要求すると、計算が完了します。
+		const long xlCalculationSemiautomatic = 2;	// Excel が再計算を制御しますが、テーブル内の変更は無視します。
+
 		// Initialize a NULL variant
 		COleVariant vtNull;
 		vtNull.vt = VT_NULL;
@@ -30,7 +34,11 @@ int main()
 		if (const auto hr = excel.CreateDispatch(_T("Excel.Application")); FAILED(hr))
 			return -2;
 
-		//excel.put_Visible(VARIANT_TRUE);
+		// この設定をすると高速化する
+		excel.put_Visible(VARIANT_FALSE);
+		excel.put_ScreenUpdating(VARIANT_FALSE);
+		//excel.put_Calculation(xlCalculationManual);
+		excel.put_EnableEvents(VARIANT_FALSE);
 
 		// Get Workbooks collection
 		CWorkbooks workbooks(excel.get_Workbooks());

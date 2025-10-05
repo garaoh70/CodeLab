@@ -21,7 +21,12 @@ namespace Garaoh70.CodeLab.ExcelOpsBench.ExcelOps_CsFW481
             void MainRoutine(int count)
             {
                 var excel = new Excel.Application();
-                //excel.Visible = true;
+
+                // この設定をすると高速化する
+                excel.Visible = false;
+                excel.ScreenUpdating = false;
+                //excel.Calculation = Excel.XlCalculation.xlCalculationManual;
+                excel.EnableEvents = false;
 
                 var path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
 
